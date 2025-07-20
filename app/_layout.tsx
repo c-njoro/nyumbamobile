@@ -1,33 +1,36 @@
-import { Ionicons } from "@expo/vector-icons";
-import { Tabs } from "expo-router";
+// app/_layout.tsx
+import { useFonts } from "expo-font";
+import { Stack } from "expo-router";
 import "../global.css";
 
-const RootLayoutNav = () => {
-  return (
-    <Tabs
-      screenOptions={{
-        headerShown: false, // Hides the header for all tabs
-        tabBarActiveTintColor: "#007AFF",
-        tabBarInactiveTintColor: "gray",
-        tabBarStyle: {
-          height: 60,
-          paddingBottom: 5,
-        },
-      }}
-    >
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: "Home",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home-outline" size={size} color={color} />
-          ),
-        }}
-      />
-    </Tabs>
-  );
-};
+export default function RootLayout() {
+  const [fontsLoaded] = useFonts({
+    "Poppins-Regular": require("../assets/fonts/Poppins-Regular.ttf"),
+    "Nunito-Regular": require("../assets/fonts/Nunito-Regular.ttf"),
+    // Add other weights/styles as needed
+  });
 
-export default function Layout() {
-  return <RootLayoutNav />;
+  if (!fontsLoaded) {
+    return null; // or a loading indicator
+  }
+  return (
+    <Stack>
+      <Stack.Screen
+        name="index"
+        options={{ headerShown: false }} // hides the "index" header
+      />
+      <Stack.Screen
+        name="landlord"
+        options={{ headerShown: false }} // hides the "index" header
+      />
+      <Stack.Screen
+        name="tenant"
+        options={{ headerShown: false }} // hides the "index" header
+      />
+      <Stack.Screen
+        name="visitor"
+        options={{ headerShown: false }} // hides the "index" header
+      />
+    </Stack>
+  );
 }

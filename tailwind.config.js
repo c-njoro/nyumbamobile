@@ -6,8 +6,14 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        body: ["Poppins"],
-        heading: ["Nunito"],
+        poppins: ["Poppins-Regular"],
+        nunito: ["Nunito-Regular"],
+      },
+      colors: {
+        primary: "#7F875E",
+        secondary: "#F5F1ED",
+        accent: "#252323",
+        super: "#E3B025",
       },
     },
   },
