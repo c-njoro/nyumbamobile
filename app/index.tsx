@@ -11,7 +11,7 @@ export default function HomeScreen() {
           Hello,
         </Text>
         <Text className=" font-semibold mb-6 text-center text-white tracking-wider font-nunito">
-          What do you want to do today?
+          Use app as a...
         </Text>
 
         <TouchableOpacity
@@ -37,7 +37,7 @@ export default function HomeScreen() {
           className="w-full bg-super p-4 rounded-2xl"
         >
           <Text className="text-accent font-poppins text-center text-lg font-medium">
-            Visitor / Explore
+            Visitor / Explorer
           </Text>
         </TouchableOpacity>
       </View>
