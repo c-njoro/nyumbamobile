@@ -1,30 +1,25 @@
-import { Colors } from "@/constants/Colors";
-import { Ionicons } from "@expo/vector-icons";
-import { Tabs } from "expo-router";
+import { LandlordAuthProvider } from "@/context/LandlordAuthContext";
+import { Stack } from "expo-router";
+
+//in this landlord layout, i want to check if landlord is logged in, if not return a login page only, if logged in return the rest
 
 export default function LandlordLayout() {
   return (
-    <Tabs
-      screenOptions={{
-        headerShown: false, // Hides the header for all tabs
-        tabBarActiveTintColor: "#007AFF",
-        tabBarInactiveTintColor: "gray",
-        tabBarStyle: {
-          backgroundColor: `${Colors.secondary}`,
-          height: 40,
-          paddingBottom: 2,
-        },
-      }}
-    >
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: "",
-          tabBarIcon: ({ size }) => (
-            <Ionicons name="home-outline" size={size} color={Colors.accent} />
-          ),
-        }}
-      />
-    </Tabs>
+    <LandlordAuthProvider>
+      <Stack>
+        <Stack.Screen
+          name="index"
+          options={{ headerShown: false }} // hides the "index" header
+        />
+        <Stack.Screen
+          name="myProperties"
+          options={{ headerShown: false }} // hides the "index" header
+        />
+        <Stack.Screen
+          name="addProperty"
+          options={{ headerShown: false }} // hides the "index" header
+        />
+      </Stack>
+    </LandlordAuthProvider>
   );
 }
