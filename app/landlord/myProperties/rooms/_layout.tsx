@@ -1,6 +1,6 @@
 import { Stack } from "expo-router";
 
-export default function MyPropertiesLayout() {
+export default function RoomLayout() {
   return (
     <Stack>
       <Stack.Screen
@@ -8,11 +8,7 @@ export default function MyPropertiesLayout() {
         options={{ headerShown: false }} // hides the "index" header
       />
       <Stack.Screen
-        name="[...propertyId]"
-        options={{ headerShown: false }} // hides the "index" header
-      />
-      <Stack.Screen
-        name="rooms"
+        name="[...roomId]"
         options={{ headerShown: false }} // hides the "index" header
       />
     </Stack>

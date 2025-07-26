@@ -1,6 +1,7 @@
 import { Colors } from "@/constants/Colors";
 import { Property } from "@/types/Property";
-import { Text, View } from "react-native";
+import { useRouter } from "expo-router";
+import { Text, TouchableOpacity, View } from "react-native";
 import AppGradient from "./AppGradient";
 
 interface Props {
@@ -8,6 +9,7 @@ interface Props {
 }
 
 const LandlordPropertyList: React.FC<Props> = ({ properties }) => {
+  const router = useRouter();
   return (
     <AppGradient colors={[`${Colors.primary}`, `${Colors.primary}`]}>
       <View className="flex w-full h-full flex-col justify-start items-start">
@@ -17,14 +19,20 @@ const LandlordPropertyList: React.FC<Props> = ({ properties }) => {
 
         {properties && properties.length > 0 ? (
           properties.map((property, index) => (
-            <View key={index} className="w-full p-4 ">
+            <TouchableOpacity
+              key={index}
+              className="w-full p-4 "
+              onPress={() =>
+                router.push(`/landlord/myProperties/${property._id}`)
+              }
+            >
               <Text className="text-xl font-semibold font-poppins text-secondary">
                 {property.name}
               </Text>
               <Text className="text-sm text-secondary font-nunito">
                 {property.description}
               </Text>
-            </View>
+            </TouchableOpacity>
           ))
         ) : (
           <Text className="text-center text-gray-500 w-full">
