@@ -1,7 +1,8 @@
 import RoomDetails from "@/components/LandlordFullRoomComponent";
 import useFullRoom from "@/hooks/fullRoom";
+import { useFocusEffect } from "@react-navigation/native";
 import { useLocalSearchParams } from "expo-router";
-import React from "react";
+import React, { useCallback } from "react";
 import { Text, View } from "react-native";
 
 const OneRoom = () => {
@@ -12,6 +13,14 @@ const OneRoom = () => {
     error: roomError,
     refetch: refetchRoom,
   } = useFullRoom(roomId);
+
+  useFocusEffect(
+    useCallback(() => {
+      if (roomId) {
+        refetchRoom();
+      }
+    }, [roomId])
+  );
 
   if (loadingRoom) {
     return <Text>Loading room...</Text>;
